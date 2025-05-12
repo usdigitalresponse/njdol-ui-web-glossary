@@ -10,6 +10,11 @@ body {
   list-style: none;
 }
 
+.term {
+  width: 640px;
+  margin-bottom: 20px;
+}
+
 .term-name {
   font-weight: bold;
 }
