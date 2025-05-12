@@ -1,0 +1,33 @@
+body {
+  max-width: 1024px;
+  margin: 0 auto;
+  font-size: 14pt;
+}
+
+.terms {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.term-name {
+  font-weight: bold;
+}
+
+.term .definition {
+  display: none;
+}
+
+.term .definition.english {
+  display: inline-block;
+}
+
+ul.language-select {
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  gap: 10px;
+
+  font-size: 11pt;
+}
