@@ -8,6 +8,8 @@ body {
   padding: 0;
   margin: 0;
   list-style: none;
+
+  margin: 25px;
 }
 
 .term {
@@ -15,8 +17,18 @@ body {
   margin-bottom: 20px;
 }
 
-.term-name {
+ul.term-name {
   font-weight: bold;
+  list-style: none;
+  padding: 0;
+}
+
+ul.term-name li {
+  display: none;
+}
+
+ul.term-name li.english {
+  display: inline-block;
 }
 
 .term .definition {

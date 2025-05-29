@@ -30,6 +30,9 @@ $(document).ready(() => {
     const selectedLanguage = $(".lang-toggle-global").val();
     $(".definition").hide();
     $(`.definition.${selectedLanguage}`).show();
+
+    $("ul.term-name li").hide();
+    $(`ul.term-name li.${selectedLanguage}`).show();
   });
 
   $(".lang-toggle").click((el) => {
