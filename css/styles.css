@@ -4,6 +4,13 @@ body {
   font-size: 14pt;
 }
 
+/*
+ * Display English by default. This will need some tweaking in prod
+ */
+ul.term-name li.english {
+  display: inline-block;
+}
+
 .terms {
   padding: 0;
   margin: 0;
@@ -21,14 +28,28 @@ ul.term-name {
   font-weight: bold;
   list-style: none;
   padding: 0;
+
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
 }
 
 ul.term-name li {
   display: none;
+  font-weight: bold;
 }
 
-ul.term-name li.english {
-  display: inline-block;
+/**
+ * Style the English tag when English is not the selected language
+ ****/
+ul.terms:not([data-lang~="english"]) ul.term-name li.english {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+ul.terms:not([data-lang~="english"]) ul.term-name li.english::before {
+  content: "-";
+  margin-right: 10px;
 }
 
 .term .definition {

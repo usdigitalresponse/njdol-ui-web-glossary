@@ -1,4 +1,7 @@
+// @ts-nocheck
 $(document).ready(() => {
+  const $terms = $("ul.terms");
+
   // Setup links
   $(".terms li.term").each((_idx, term) => {
     const definitions = $(term)
@@ -17,7 +20,7 @@ $(document).ready(() => {
       definitions.forEach((definition) => {
         ul.innerHTML += `
           <li>
-            <a href="" class="lang-toggle" data-lang="${definition}">${definition}</a>
+            <a href="#" class="lang-toggle" data-lang="${definition}">${definition}</a>
           </li>
         `;
       });
@@ -26,20 +29,32 @@ $(document).ready(() => {
     }
   });
 
+  /**
+   * Toggle all definitions at once.
+   */
   $(".apply-lang").click((el) => {
     const selectedLanguage = $(".lang-toggle-global").val();
+
     $(".definition").hide();
     $(`.definition.${selectedLanguage}`).show();
 
-    $("ul.term-name li").hide();
-    $(`ul.term-name li.${selectedLanguage}`).show();
+    const $termNames = $("ul.term-name");
+
+    $terms.attr("data-lang", selectedLanguage);
+
+    $termNames.find("li").hide();
+    $termNames.find(`li.${selectedLanguage}`).show();
+    // Always show the English option
+    $termNames.find(`li.english`).show();
   });
 
+  /**
+   * Toggle the language within an individual block
+   */
   $(".lang-toggle").click((el) => {
     const lang = el.currentTarget.attributes["data-lang"].nodeValue;
 
     const $matchedParent = $(el.currentTarget).parents("li.term");
-
     const $matchedLang = $matchedParent.find(`.definition.${lang}`);
 
     $matchedParent.find(".definition").hide();
