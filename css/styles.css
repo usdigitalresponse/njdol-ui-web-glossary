@@ -42,6 +42,7 @@ ul.term-name li {
 /**
  * Style the English tag when English is not the selected language
  ****/
+/*
 ul.terms:not([data-lang~="english"]) ul.term-name li.english {
   font-size: 0.8em;
   font-weight: normal;
@@ -51,6 +52,7 @@ ul.terms:not([data-lang~="english"]) ul.term-name li.english::before {
   content: "-";
   margin-right: 10px;
 }
+*/
 
 .term .definition {
   display: none;
@@ -68,4 +70,13 @@ ul.language-select {
   gap: 10px;
 
   font-size: 11pt;
+}
+
+.control-block {
+  display: flex;
+  gap: 25px;
+}
+
+.glossary-search-summary {
+  display: none;
 }

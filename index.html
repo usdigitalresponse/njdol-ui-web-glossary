@@ -9,18 +9,33 @@
   <body>
     <h1>Test site</h1>
 
-    <div>
-      <label>Select Language</label>
-      <select class="lang-toggle-global">
-        <option value="english">English</option>
-        <option value="spanish">Spanish</option>
-        <option value="mandarin">Mandarin</option>
-      </select>
-      <button class="apply-lang">Apply</button>
+    <div class="control-block">
+      <div>
+        <label>Select Language</label>
+        <select class="lang-toggle-global">
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="mandarin">Mandarin</option>
+        </select>
+        <button class="apply-lang">Apply</button>
+      </div>
+      <div>
+        <input type="text" class="glossary-search-input" />
+        <button class="glossary-search-button">Search</button>
+        <button class="glossary-search-reset">Reset</button>
+      </div>
     </div>
 
+    <div class="glossary-search-summary">
+      <span class="glossary-search-match-count"> </span>
+      matches found
+    </div>
+
+    <!-- Terms block, note that data-lang should be set to the initial language -->
     <ul class="terms" data-lang="english">
       <li class="term">
+        <a name="apple"></a>
+
         <ul class="term-name">
           <li class="spanish">Manzana</li>
           <li class="mandarin">苹果</li>
@@ -108,6 +123,7 @@
       </li>
 
       <li class="term">
+        <a name="strawberry"></a>
         <ul class="term-name">
           <li class="spanish">Fragaria</li>
           <li class="mandarin">草莓</li>
