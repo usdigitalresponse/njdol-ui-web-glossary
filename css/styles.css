@@ -42,17 +42,15 @@ ul.term-name li {
 /**
  * Style the English tag when English is not the selected language
  ****/
-/*
-ul.terms:not([data-lang~="english"]) ul.term-name li.english {
+li.term:not([data-lang~="english"]) ul.term-name li.english {
   font-size: 0.8em;
   font-weight: normal;
 }
 
-ul.terms:not([data-lang~="english"]) ul.term-name li.english::before {
+li.term:not([data-lang~="english"]) ul.term-name li.english::before {
   content: "-";
   margin-right: 10px;
 }
-*/
 
 .term .definition {
   display: none;

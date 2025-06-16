@@ -12,6 +12,12 @@ $(document).ready(() => {
     console.error("No selected language set on ul.terms");
   }
 
+  const setLangAttrOnTerms = () => {
+    $terms.find("li.term").attr("data-lang", selectedLanguage);
+  };
+
+  setLangAttrOnTerms();
+
   /**
    * Setup links
    */
@@ -58,6 +64,8 @@ $(document).ready(() => {
     $termNames.find(`li.${selectedLanguage}`).show();
     // Always show the English option
     $termNames.find(`li.english`).show();
+
+    setLangAttrOnTerms();
   });
 
   /**
@@ -67,6 +75,8 @@ $(document).ready(() => {
     const lang = el.currentTarget.attributes["data-lang"].nodeValue;
     const $matchedParent = $(el.currentTarget).parents("li.term");
     const $matchedLang = $matchedParent.find(`.definition.${lang}`);
+
+    $matchedParent.attr("data-lang", lang);
 
     $matchedParent.find(".definition").hide();
 
@@ -90,17 +100,21 @@ $(document).ready(() => {
       const lowerCaseSearchTerm = searchTerm.toLocaleLowerCase();
       $terms.find("li.term").each((_idx, term) => {
         const $term = $(term);
+        let matched = false;
         $term
-          .find(`.term-name .${selectedLanguage}`)
+          .find(`.term-name .${selectedLanguage}, .term-name .english`)
           .each((_idx, termNameEl) => {
             const termName = termNameEl.innerHTML?.toLocaleLowerCase();
-
             if (termName.includes(lowerCaseSearchTerm)) {
-              matches++;
-            } else {
-              $term.hide();
+              matched = true;
             }
           });
+
+        if (matched) {
+          matches++;
+        } else {
+          $term.hide();
+        }
       });
 
       $glossarySearchSummary.show();
