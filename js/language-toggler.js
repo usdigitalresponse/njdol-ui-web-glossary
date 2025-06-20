@@ -5,6 +5,12 @@ $(document).ready(() => {
   const $glossarySearchSummary = $(".glossary-search-summary");
   const $glossarySearchReset = $(".glossary-search-reset");
   const $glossarySearchInput = $(".glossary-search-input");
+  const scrollToTop = () =>
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
 
   let selectedLanguage = $terms.attr("data-lang");
 
@@ -12,14 +18,36 @@ $(document).ready(() => {
     console.error("No selected language set on ul.terms");
   }
 
+  /**
+   * Set the correct data-lang on every definition to denote the
+   * current language.
+   */
   const setLangAttrOnTerms = () => {
     $terms.find("li.term").attr("data-lang", selectedLanguage);
   };
 
+  /*
+   *
+   * Setup
+   *
+   */
+
   setLangAttrOnTerms();
 
   /**
-   * Setup links
+   * Add the "scroll to head" links
+   */
+  $terms.find("li.section-head").each((_idx, head) => {
+    const anchor = document.createElement("a");
+    anchor.className = "return-to-top";
+    anchor.innerText = "Scroll to top";
+    anchor.addEventListener("click", scrollToTop);
+
+    head.appendChild(anchor);
+  });
+
+  /**
+   * Setup links on the individual glossary term definitions
    */
   $(".terms li.term").each((_idx, term) => {
     const definitions = $(term)
@@ -46,6 +74,12 @@ $(document).ready(() => {
       term.append(ul);
     }
   });
+
+  /*
+   *
+   * Click and event handlers
+   *
+   */
 
   /**
    * Toggle all definitions at once.
