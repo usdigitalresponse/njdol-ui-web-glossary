@@ -2,6 +2,8 @@ body {
   max-width: 1024px;
   margin: 0 auto;
   font-size: 14pt;
+
+  font-family: "Roboto", sans-serif !important;
 }
 
 /**
@@ -23,6 +25,22 @@ body {
 
   position: sticky;
   top: 0;
+}
+
+.glossary-main ul.navigation li a {
+  display: block;
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 3px;
+  text-decoration: none;
+  background-image: linear-gradient(#73c3cc, #98f3f2);
+  background-size: 200% 200%;
+  transition: background-position 1s;
+  color: white;
+}
+
+.glossary-main ul.navigation li a:hover {
+  background-position: 100% 100%;
 }
 
 .glossary-main .section-head {
@@ -120,66 +138,42 @@ ul.language-select {
 }
 
 /**
- * Doors & windows pathway summaries
+ * Filters
  ************************************/
-
-.doors {
+.filter-bar {
   display: flex;
   gap: 20px;
-  justify-content: space-between;
-  margin: 25px 0;
-}
-
-.doors .door {
-  width: 250px;
-  border: 1px solid;
-  padding: 5px;
-  font-size: 0.8em;
-}
-
-.doors .title {
-  margin: 0 0 15px;
-  font-weight: bold;
-}
-
-.doors .door.visible-list ul.terms {
-  height: 150px;
-  overflow-y: scroll;
-}
-
-.doors .door.toggle-list details {
   margin: 20px 0;
-  max-height: 150px;
-  overflow: scroll;
-}
-
-.doors .door.flip .inner {
-  position: relative;
-  width: 100%;
-  height: 240px;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip:hover .inner {
-  transform: rotateY(180deg);
-}
-
-.flip .card-front,
-.flip .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
+  font-size: 0.9em;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
   overflow: auto;
 }
 
-.flip .card-front {
-  background: #fff;
+.filter-bar .filter-tab {
+  border-radius: 5px;
+  padding: 15px;
+  width: 200px;
+  /*background: #afd6cb;*/
+  background-image: radial-gradient(circle at top left, #85d0bb, #bce4d8);
+  background-size: 200% 200%;
+  color: #436648;
+  transition: filter 0.5s, background-position 1s;
+  filter: saturate(75%);
+  height: 220px;
 }
 
-.flip .card-back {
-  background-color: #fff;
-  transform: rotateY(180deg);
+.filter-bar .filter-tab:hover {
+  cursor: pointer;
+  background-position: 100% 100%;
+
+  filter: saturate(150%);
+}
+
+.filter-bar .title {
+  margin: 0 0 15px;
+  font-weight: bold;
+  text-align: center;
 }

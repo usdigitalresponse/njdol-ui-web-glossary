@@ -49,7 +49,7 @@ $(document).ready(() => {
   /**
    * Setup links on the individual glossary term definitions
    */
-  $(".terms li.term").each((_idx, term) => {
+  $terms.find("li.term").each((_idx, term) => {
     const definitions = $(term)
       .find(".definition")
       .map((idx, definition) => {
