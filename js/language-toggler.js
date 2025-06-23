@@ -1,6 +1,6 @@
 // @ts-nocheck
 $(document).ready(() => {
-  const $terms = $("ul.terms");
+  const $terms = $("ul.glossary-terms");
   const $glossarySearchMatchCount = $(".glossary-search-match-count");
   const $glossarySearchSummary = $(".glossary-search-summary");
   const $glossarySearchReset = $(".glossary-search-reset");
@@ -15,7 +15,7 @@ $(document).ready(() => {
   let selectedLanguage = $terms.attr("data-lang");
 
   if (!selectedLanguage) {
-    console.error("No selected language set on ul.terms");
+    console.error("No selected language set on ul.glossary-terms");
   }
 
   /**

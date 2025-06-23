@@ -48,7 +48,7 @@ ul.term-name li.english {
   display: inline-block;
 }
 
-ul.terms {
+ul.glossary-terms {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -56,7 +56,7 @@ ul.terms {
   margin: 25px;
 }
 
-ul.terms li.term {
+ul.glossary-terms li.term {
   width: 640px;
   margin-bottom: 20px;
   padding: 10px 0;
