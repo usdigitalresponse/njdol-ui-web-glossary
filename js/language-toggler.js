@@ -1,5 +1,13 @@
 // @ts-nocheck
+
+/**
+ *
+ * TODO:
+ *
+ * - toggle all elements by language, not just the glossary terms.
+ */
 $(document).ready(() => {
+  const $glossary = $("main.glossary");
   const $terms = $("ul.glossary-terms");
   const $glossarySearchMatchCount = $(".glossary-search-match-count");
   const $glossarySearchSummary = $(".glossary-search-summary");
@@ -12,10 +20,10 @@ $(document).ready(() => {
       behavior: "smooth",
     });
 
-  let selectedLanguage = $terms.attr("data-lang");
+  let selectedLanguage = $glossary.attr("data-lang");
 
   if (!selectedLanguage) {
-    console.error("No selected language set on ul.glossary-terms");
+    console.error("No selected language set on main.glossary");
   }
 
   /**
@@ -92,7 +100,7 @@ $(document).ready(() => {
 
     const $termNames = $("ul.term-name");
 
-    $terms.attr("data-lang", selectedLanguage);
+    $glossary.attr("data-lang", selectedLanguage);
 
     $termNames.find("li").hide();
     $termNames.find(`li.${selectedLanguage}`).show();
@@ -165,5 +173,37 @@ $(document).ready(() => {
     $glossarySearchSummary.hide();
     $terms.find("li.term").show();
     $glossarySearchInput.val("");
+    $glossary.find(".filter-tab").removeClass("selected");
+  });
+
+  /*
+   *
+   */
+  $glossary.find(".filter-tab").click((el) => {
+    const category = el.currentTarget.dataset.category;
+    const selectedCategory = $terms.attr("data-category");
+    $glossary.find(".filter-tab").removeClass("selected");
+
+    if (selectedCategory === category) {
+      // Reset filter, show all terms
+      $terms.find("li.term").show();
+      $glossarySearchSummary.hide();
+      $terms.attr("data-category", "");
+    } else {
+      // apply new category filter
+      $terms.attr("data-category", category);
+      $terms.find("li.term").hide();
+
+      const $categoryTerms = $terms.find(
+        `li.term[data-category*="${category}"]`
+      );
+
+      $categoryTerms.show();
+      const matched = $categoryTerms.length;
+
+      $glossarySearchSummary.show();
+      $glossarySearchMatchCount.text(matched);
+      $(el.currentTarget).addClass("selected");
+    }
   });
 });

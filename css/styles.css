@@ -12,6 +12,8 @@ body {
 
 .glossary-main {
   display: flex;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
 }
 
 .glossary-main nav {
@@ -140,13 +142,19 @@ ul.language-select {
 /**
  * Filters
  ************************************/
+
+.search-filter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .filter-bar {
   display: flex;
   gap: 20px;
   margin: 20px 0;
   font-size: 0.9em;
   align-items: center;
-  border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
   overflow: auto;
@@ -156,13 +164,18 @@ ul.language-select {
   border-radius: 5px;
   padding: 15px;
   width: 200px;
-  /*background: #afd6cb;*/
   background-image: radial-gradient(circle at top left, #85d0bb, #bce4d8);
   background-size: 200% 200%;
-  color: #436648;
+  color: green;
   transition: filter 0.5s, background-position 1s;
-  filter: saturate(75%);
+  filter: saturate(50%);
   height: 220px;
+  border: 1px solid transparent;
+}
+
+.filter-bar .filter-tab.selected {
+  border-color: green;
+  filter: saturate(100%);
 }
 
 .filter-bar .filter-tab:hover {
