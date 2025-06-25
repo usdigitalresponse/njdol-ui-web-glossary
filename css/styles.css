@@ -1,9 +1,19 @@
 body {
-  max-width: 1024px;
   margin: 0 auto;
   font-size: 14pt;
 
   font-family: "Roboto", sans-serif !important;
+}
+
+main.glossary {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  main.glossary {
+    width: auto;
+  }
 }
 
 /**
@@ -13,12 +23,19 @@ body {
 .glossary-main {
   display: flex;
   border-top: 1px solid #ccc;
-  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .glossary-main {
+    margin: 20px;
+    width: auto;
+  }
 }
 
 .glossary-main nav {
   display: block;
   height: 100%;
+  font-size: 0.8em;
 }
 
 .glossary-main ul.navigation {
@@ -77,7 +94,6 @@ ul.glossary-terms {
 }
 
 ul.glossary-terms li.term {
-  width: 640px;
   margin-bottom: 20px;
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
@@ -166,23 +182,69 @@ ul.language-select {
   width: 200px;
   background-image: radial-gradient(circle at top left, #85d0bb, #bce4d8);
   background-size: 200% 200%;
-  color: green;
+  color: #444;
   transition: filter 0.5s, background-position 1s;
   filter: saturate(50%);
-  height: 220px;
-  border: 1px solid transparent;
+  min-height: 220px;
+  border: 3px solid transparent;
 }
 
-.filter-bar .filter-tab.selected {
-  border-color: green;
-  filter: saturate(100%);
+.filter-tab[data-category*="afb"] {
+  filter: saturate(50%) hue-rotate(30deg);
+}
+
+.filter-tab[data-category*="swc"] {
+  filter: saturate(50%) hue-rotate(60deg);
+}
+
+.filter-tab[data-category*="aad"] {
+  filter: saturate(50%) hue-rotate(90deg);
+}
+
+.filter-tab[data-category*="obs"] {
+  filter: saturate(50%) hue-rotate(120deg);
+}
+
+.filter-tab.selected {
+  border-color: #333;
+}
+
+.filter-tab[data-category*="afb"].selected {
+  filter: saturate(100%) hue-rotate(30deg);
+}
+
+.filter-tab[data-category*="swc"].selected {
+  filter: saturate(100%) hue-rotate(60deg);
+}
+
+.filter-tab[data-category*="aad"].selected {
+  filter: saturate(100%) hue-rotate(90deg);
+}
+
+.filter-tab[data-category*="obs"].selected {
+  filter: saturate(100%) hue-rotate(120deg);
 }
 
 .filter-bar .filter-tab:hover {
   cursor: pointer;
   background-position: 100% 100%;
-
   filter: saturate(150%);
+}
+
+.filter-tab[data-category*="afb"]:hover {
+  filter: saturate(150%) hue-rotate(30deg);
+}
+
+.filter-tab[data-category*="swc"]:hover {
+  filter: saturate(150%) hue-rotate(60deg);
+}
+
+.filter-tab[data-category*="aad"]:hover {
+  filter: saturate(150%) hue-rotate(90deg);
+}
+
+.filter-tab[data-category*="obs"]:hover {
+  filter: saturate(150%) hue-rotate(120deg);
 }
 
 .filter-bar .title {

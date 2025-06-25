@@ -42,6 +42,9 @@ $(document).ready(() => {
 
   setLangAttrOnTerms();
 
+  $glossary.find(".lang").hide();
+  $glossary.find(`.lang.${selectedLanguage}`).show();
+
   /**
    * Add the "scroll to head" links
    */
@@ -94,6 +97,10 @@ $(document).ready(() => {
    */
   $(".apply-lang").click((el) => {
     selectedLanguage = $(".lang-toggle-global").val();
+
+    // The generic toggle...
+    $glossary.find(".lang").hide();
+    $glossary.find(`.lang.${selectedLanguage}`).show();
 
     $(".definition").hide();
     $(`.definition.${selectedLanguage}`).show();
