@@ -153,6 +153,8 @@ ul.language-select {
 
 .glossary-search-summary {
   display: none;
+  text-align: center;
+  margin: 5px 0 15px;
 }
 
 /**

@@ -102,17 +102,12 @@ $(document).ready(() => {
     $glossary.find(".lang").hide();
     $glossary.find(`.lang.${selectedLanguage}`).show();
 
-    $(".definition").hide();
-    $(`.definition.${selectedLanguage}`).show();
-
-    const $termNames = $("ul.term-name");
-
     $glossary.attr("data-lang", selectedLanguage);
 
-    $termNames.find("li").hide();
-    $termNames.find(`li.${selectedLanguage}`).show();
-    // Always show the English option
-    $termNames.find(`li.english`).show();
+    const $termNames = $("ul.term-name");
+    // Always show the English term label option regardless of
+    // selected language
+    $termNames.find(`li.lang.english`).show();
 
     setLangAttrOnTerms();
   });
