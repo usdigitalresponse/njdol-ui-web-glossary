@@ -42,3 +42,29 @@ Ever term definition component should include an anchor element with a unique na
 
 This will allow linking directly to the component via url, just append `#able_to_work` to the
 end of the glossary page's url.
+
+## Defining terms
+
+Terms should have the structure of:
+
+```
+ <li class="term" data-category="aad">
+    <a name="UNIQUE_KEY_FOR_LINKING"></a>
+    <ul class="term-name">
+        <li class="lang spanish">SPANISH_TERM</li>
+        <li class="lang english">ENGLISH_TERM</li>
+    </ul>
+
+    <div class="definitions">
+        <div class="definition lang english">
+        ENGLISH_DEFINITION
+        </div>
+        <div class="definition lang spanish">
+        SPANISH_DEFINITION
+        </div>
+    </div>
+ </li>
+```
+
+Important note: while the definitions can be in any order, the English term should be the last element
+in the ul.term-name tag. This is because the English term name will always be visible.

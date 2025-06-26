@@ -188,7 +188,7 @@ ul.language-select {
   transition: filter 0.5s, background-position 1s;
   filter: saturate(50%);
   min-height: 220px;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
 }
 
 .filter-tab[data-category*="afb"] {

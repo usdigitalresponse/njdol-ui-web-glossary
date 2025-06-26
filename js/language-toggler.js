@@ -77,7 +77,7 @@ $(document).ready(() => {
       definitions.forEach((definition) => {
         ul.innerHTML += `
           <li>
-            <a href="#" class="lang-toggle" data-lang="${definition}">${definition}</a>
+            <a href="#" aria-label="toggle language to ${definition}" class="lang-toggle" data-lang="${definition}">${definition}</a>
           </li>
         `;
       });
