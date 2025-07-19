@@ -1,41 +1,79 @@
-‼️⚠️ **Welcome to your new repo! It already includes a few important files. First things first, please update this repository with information specific to your project. It doesn't need to be perfect or 100% complete, but please to fill in as much as possible to start with. In particular, please make sure to replace the text `{PROJECT_NAME}` and `{YOUR_GITHUB_USERNAME}`.**
+# New Jersey Department of Labor Web Glossary
 
-**Please review USDR’s general guidelines for software & data, too: https://policies.usdigitalresponse.org/data-and-software-guidelines**
-
-[![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](./CODE_OF_CONDUCT.md)
-
-# {PROJECT_NAME}
-
-Description of what the project does and who & where it is used.
-
+This solution utlizes jQuery and assumes that the page is statically loaded, with no dynamic components added in after page load.
 
 ## Setup & Installation
 
-How does someone install and run (and deploy, if applicable) the project?
+All code is expected to be on the page.
 
+The root html element needs to be marked by the "glossary" class.
+
+You must specify the language of the page on the glossary element with the data-lang attribute:
+
+`<main class="glossary" data-lang="english">`
+
+This will be used to determine the proper language to show. All text variants are present in the html and are toggled on or off based on whatever value is set in that data-lang
 
 ## Developing Locally
 
-Describe how to set up a local development environment.
+The project can be run locally by spawning a web server that uses the directory root as a host.
 
+There's various ways to do this like `php -S localhost` or using the Live Preview extension in VSCode.
+
+## Defining Definitions
+
+Every element that is intended to be toggled should have two classes: lang, and the selected language. For example an english language span would look like:
+
+`<span class="lang english">English Description</span>`
+
+Elements with the lang class should not be nested within each other. Doing so will have unpredictable behavior
+
+As delivered there are two languages supported: English (the default), and Spanish.
+
+## Linking to Definitions
+
+Every term definition component should include an anchor element with a unique name, for example:
+
+`<a name="able_to_work"></a>`
+
+This will allow linking directly to the component via url, just append #able_to_work to the end of the glossary page's url.
+
+## Defining Terms
+
+Terms should have the structure of:
+
+```
+ <li class="term" data-category="aad">
+    <a name="UNIQUE_KEY_FOR_LINKING"></a>
+    <ul class="term-name">
+        <li class="lang spanish">SPANISH_TERM</li>
+        <li class="lang english">ENGLISH_TERM</li>
+    </ul>
+
+    <div class="definitions">
+        <div class="definition lang english">
+        ENGLISH_DEFINITION
+        </div>
+        <div class="definition lang spanish">
+        SPANISH_DEFINITION
+        </div>
+    </div>
+ </li>
+```
+
+Important note: while the definitions can be in any order, the English term should be the last element in the ul.term-name tag. This is because the English term name will always be visible.
 
 ## Code of Conduct
 
 This repository falls under [U.S. Digital Response’s Code of Conduct](./CODE_OF_CONDUCT.md), and we will hold all participants in issues, pull requests, discussions, and other spaces related to this project to that Code of Conduct. Please see [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for the full code.
 
-
 ## Contributing
 
 This project wouldn’t exist without the hard work of many people. Thanks to the following for all their contributions! Please see [`CONTRIBUTING.md`](./CONTRIBUTING.md) to find out how you can help.
 
-**Lead Maintainer:** [@{YOUR_GITHUB_USERNAME}](https://github.com/{YOUR_GITHUB_USERNAME})
+**Lead Maintainer:** [@cbroome](https://github.com/cbroome)
 
 **Additional Contributors:**
-
-- List
-- of
-- Contributors
-
 
 ## License & Copyright
 

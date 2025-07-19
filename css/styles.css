@@ -1,0 +1,257 @@
+body {
+  margin: 0 auto;
+  font-size: 14pt;
+
+  font-family: "Roboto", sans-serif !important;
+}
+
+main.glossary {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  main.glossary {
+    width: auto;
+  }
+}
+
+/**
+ * Glossary and navigation layout
+ ************************************/
+
+.glossary-main {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+@media (max-width: 768px) {
+  .glossary-main {
+    margin: 20px;
+    width: auto;
+  }
+}
+
+.glossary-main nav {
+  display: block;
+  height: 100%;
+  font-size: 0.8em;
+}
+
+.glossary-main ul.navigation {
+  list-style-type: none;
+  padding: 5px;
+
+  position: sticky;
+  top: 0;
+}
+
+.glossary-main ul.navigation li a {
+  display: block;
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 3px;
+  text-decoration: none;
+  background-image: linear-gradient(#73c3cc, #98f3f2);
+  background-size: 200% 200%;
+  transition: background-position 1s;
+  color: white;
+}
+
+.glossary-main ul.navigation li a:hover {
+  background-position: 100% 100%;
+}
+
+.glossary-main .section-head {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.glossary-main .return-to-top {
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+/*
+ * Display English by default. This will need some tweaking in prod
+ */
+ul.term-name li.english {
+  display: inline-block;
+}
+
+ul.glossary-terms {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  margin: 25px;
+}
+
+ul.glossary-terms li.term {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.term-name {
+  font-weight: bold;
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+ul.term-name li {
+  display: none;
+  font-weight: bold;
+}
+
+/**
+ * Style the English tag when English is not the selected language
+ ****/
+li.term:not([data-lang~="english"]) ul.term-name li.english {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+li.term:not([data-lang~="english"]) ul.term-name li.english::before {
+  content: "|";
+  margin-right: 10px;
+}
+
+.term .definition {
+  display: none;
+}
+
+.term .definition.english {
+  display: inline-block;
+}
+
+ul.language-select {
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  gap: 10px;
+
+  font-size: 0.7em;
+  margin-top: 5px;
+}
+
+.control-block {
+  display: flex;
+  gap: 25px;
+}
+
+.glossary-search-summary {
+  display: none;
+  text-align: center;
+  margin: 5px 0 15px;
+}
+
+/**
+ * Filters
+ ************************************/
+
+.search-filter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  font-size: 0.9em;
+  align-items: stretch;
+  border-radius: 5px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.filter-bar .filter-tab {
+  border-radius: 5px;
+  padding: 15px;
+  width: 200px;
+  background-image: radial-gradient(circle at top left, #32f2bc, #b9f7e5);
+  background-size: 200% 200%;
+  color: rgba(0, 0, 0, 0.6);
+  transition: filter 0.5s, background-position 1s;
+  filter: saturate(50%);
+  min-height: 220px;
+  border: 2px solid transparent;
+}
+
+.filter-tab[data-category*="afb"] {
+  filter: saturate(50%) hue-rotate(0deg);
+}
+
+.filter-tab[data-category*="swc"] {
+  filter: saturate(50%) hue-rotate(90deg);
+}
+
+.filter-tab[data-category*="aad"] {
+  filter: saturate(50%) hue-rotate(180deg);
+}
+
+.filter-tab[data-category*="obs"] {
+  filter: saturate(50%) hue-rotate(270deg);
+}
+
+.filter-tab.selected {
+  border-color: rgba(14, 135, 82, 0.6);
+}
+
+.filter-tab[data-category*="afb"].selected {
+  filter: saturate(100%) hue-rotate(0deg);
+}
+
+.filter-tab[data-category*="swc"].selected {
+  filter: saturate(100%) hue-rotate(90deg);
+}
+
+.filter-tab[data-category*="aad"].selected {
+  filter: saturate(100%) hue-rotate(180deg);
+}
+
+.filter-tab[data-category*="obs"].selected {
+  filter: saturate(100%) hue-rotate(270deg);
+}
+
+.filter-bar .filter-tab:hover {
+  cursor: pointer;
+  background-position: 100% 100%;
+  filter: saturate(150%);
+}
+
+.filter-tab[data-category*="afb"]:hover {
+  filter: saturate(150%) hue-rotate(0deg);
+}
+
+.filter-tab[data-category*="swc"]:hover {
+  filter: saturate(150%) hue-rotate(90deg);
+}
+
+.filter-tab[data-category*="aad"]:hover {
+  filter: saturate(150%) hue-rotate(180deg);
+}
+
+.filter-tab[data-category*="obs"]:hover {
+  filter: saturate(150%) hue-rotate(270deg);
+}
+
+.filter-bar .title {
+  margin: 0 0 15px;
+  font-size: 1.1em;
+  text-align: center;
+  min-height: 40px;
+}
